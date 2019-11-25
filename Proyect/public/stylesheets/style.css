@@ -13,4 +13,9 @@ a {
 .auth {
   margin-right: 3em; }
 
+.fondo {
+  background-image: url("../images/Madrid apokaliptica.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
+
 /*# sourceMappingURL=style.css.map */
