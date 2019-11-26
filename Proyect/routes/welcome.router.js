@@ -34,6 +34,13 @@ router.get('/', (req, res, next) => {
       console.log('Error  ', error);
     })
   })
+
+
+
+  router.get('/map', (req, res, next) => {
+    res.render('map');
+  });
+  
   module.exports = router;
   // console.log("--->", data, "despues de la modificacion")
   // let min = Math.floor(data.min_temp,1)
