@@ -24,27 +24,40 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
+  //guardando user y pass desde el form
   const username = req.body.username;
   const password = req.body.password;
+  const refugio = req.body.refugio;
+  const localizacion = req.body.localizacion;
+
+  //comprueba que los campos tengan texto
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
     return;
   }
 
+
   User.findOne({ username }, "username", (err, user) => {
+    
+    //Comprueba que el usuario sea nuevo
     if (user !== null) {
       res.render("auth/signup", { message: "The username already exists" });
       return;
     }
 
+    //encriptacion password
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
+    //plantilla nuevo usuario
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      refugio,
+      localizacion
     });
 
+    //salva el nuevo usuario
     newUser.save()
     .then(() => {
       res.redirect("/");
