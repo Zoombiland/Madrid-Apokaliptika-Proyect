@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Simple Map</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <style>
+    #map {
+      height: 100%;
+      width: 70%
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    var map;
+    function initMap() {
+
+
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrPNbJOlFtyYOkm722n_jbRGtSxOsE_q8
+&callback=initMap" async defer></script>
+
+  {{!-- Hasta aqui el mapa default --}}
+
+
+
+</body>
+
+</html>
+
+
+{{!-- /*var marker = new google.maps.Marker({
+        map: map,
+        position: { lat: 30, lng: 20 }
+      }) --}}
+{{!-- place = { lat: 40.39, lng: -3.69 }
+map = new google.maps.Map(document.getElementById('map'), {
+center: place,
+zoom: 14
+});
+contentString =
+
+'</div>' +
+'<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+'<div id="bodyContent">' +
+  '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+    'sandstone rock formation in the southern part of the ' +
+    'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
+    'south west of the nearest large town, Alice Springs; 450&#160;km ' +
+    '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
+    'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
+    'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
+    'Aboriginal people of the area. It has many springs, waterholes, ' +
+    'rock caves and ancient paintings. Uluru is listed as a World ' +
+    'Heritage Site.</p>' +
+  '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+      'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
+    '(last visited June 22, 2009).</p>' +
+  '</div>' +
+'</div>';
+infowindow = new google.maps.InfoWindow({
+content: contentString,
+maxWidth: 200
+});
+marker = new google.maps.Marker({
+position: place,
+map: map,
+title: 'ironhack'
+});
+/*
+llamar a la bd de users, traer array de users
+para cada user convertir su localizacion en coordenadas
+pintar marker con cada una de esas coordenadas
+*/
+
+marker.addListener('click', function () {
+infowindow.open(map, marker);
+}); --}}

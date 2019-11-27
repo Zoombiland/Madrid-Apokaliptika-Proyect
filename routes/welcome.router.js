@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const APIHandler = require('../services/APIHandler')
 const weatherApi = new APIHandler("https://www.metaweather.com/api/location/766273/")
+const Places = require("../models/Places")
 /* GET home page */
 
 router.get('/', (req, res, next) => {
@@ -27,16 +28,64 @@ router.get('/', (req, res, next) => {
 
       res.render('welcome', {
         alldata: redata.data.consolidated_weather
-        
+
       })
     })
     .catch(error => {
       console.log('Error  ', error);
     })
-  })
-  module.exports = router;
-  // console.log("--->", data, "despues de la modificacion")
-  // let min = Math.floor(data.min_temp,1)
-  // let max = Math.floor(data.max_temp,1)
-  // console.log(min)
-  // alldataMin: min, alldataMax: max
+})
+
+
+
+router.get('/map', (req, res, next) => {
+  res.render('map');
+});
+
+router.get('/places', (req, res, next) => {
+  res.render('place')
+});
+console.log("------->Empezamos aqui")
+router.post('/places', (req, res, next) => {
+  console.log("Aqui estoy")
+  const {
+    nombre,
+    localizacion,
+    categoria,
+    activo,
+    descripcion
+  } = req.body
+  // activo == "operativo" ? activo = true : activo = false
+  console.log(
+    nombre,
+    localizacion,
+    categoria,
+    activo,
+    descripcion
+  )
+  Places.create({
+      nombre,
+      localizacion,
+      categoria,
+      activo,
+      descripcion
+    })
+    .then(x => res.redirect('/welcome'))
+    .catch(err => console.log('error!!', err))
+})
+
+router.get('/map/:id', (req, res) => {
+  const placeId = req.params.id
+  Place.findById(placeId)
+    .then(thePlace => res.render('map', {
+      map: thePlace
+    }))
+    .catch(err => console.log("Error consultando la BBDD: ", err))
+})
+
+module.exports = router;
+// console.log("--->", data, "despues de la modificacion")
+// let min = Math.floor(data.min_temp,1)
+// let max = Math.floor(data.max_temp,1)
+// console.log(min)
+// alldataMin: min, alldataMax: max

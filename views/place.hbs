@@ -1,0 +1,35 @@
+<div class="container col-md-9">
+    <h2>Sitios</h2>
+    <form action="/welcome/places" method="POST">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre"  name="nombre"placeholder="nombre">
+        </div>
+        <div class="form-group">
+            <label for="localizacion">Localizacion</label>
+            <input id="localizacion" name="localizacion" type="text" class="form-control" placeholder="Ponga la dirección">
+        </div>
+        <div class="form-group">
+            <label for="categoria">Categorias</label>
+            <select class="form-control" id="categoria" name="categoria">
+                <option>Alimentación</option>
+                <option>Farmacia</option>
+                <option>Hospital</option>
+                <option>Comunicaciones </option>
+                <option>Punto de encuentro</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="activo">En activo</label>
+            <select class="form-control" id="activo" name="activo">
+                <option>Operativo</option>
+                <option>No operativo</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción del Lugar</label>
+            <textarea class="form-control" id="descripcion" rows="3" name="descripcion"></textarea>
+        </div>
+        <button type="submit" class"btn btn-success btn-lg">Crear sitio</button>
+    </form>
+</div>
