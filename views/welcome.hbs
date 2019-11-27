@@ -1,0 +1,84 @@
+<div class=" col">
+  <div class="row d-flex justify-content-around">
+
+    <div class="card text-white bg-warning mb-3">
+      <div class="card-body text-center">
+        <h2 class="">Hoy</h2>
+        <ul class="">
+          <li class="name"><img
+              src="https://www.metaweather.com/static/img/weather/png/64/{{alldata.[0].weather_state_abbr}}.png"
+              alt="weather logo"></li>
+          <li class="min">Temp {{alldata.[0].the_temp}} ºC</li>
+          <li class="min">Min {{alldata.[0].min_temp}} ºC</li>
+          <li class="max">Max {{alldata.[0].max_temp}} ºC</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card text-white bg-warning mb-3">
+      <div class="card-body">
+        <h2>Mañana</h2>
+        <ul class="General">
+          <li class="name"><img
+              src="https://www.metaweather.com/static/img/weather/png/64/{{alldata.[1].weather_state_abbr}}.png"
+              alt="weather logo"></li>
+          <li class="min">Temp {{alldata.[1].the_temp}} ºC</li>
+          <li class="min">Min {{alldata.[1].min_temp}} ºC</li>
+          <li class="max">Max {{alldata.[1].max_temp}} ºC</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card text-white bg-warning mb-3">
+      <div class="card-body">
+        <h2>{{alldata.[2].applicable_date}}</h2>
+        <ul class="General">
+          <li class="name"><img
+              src="https://www.metaweather.com/static/img/weather/png/64/{{alldata.[2].weather_state_abbr}}.png"
+              alt="weather logo"></li>
+          <li class="min">Temp {{alldata.[2].the_temp}} ºC</li>
+          <li class="min">Min {{alldata.[2].min_temp}} ºC</li>
+          <li class="max">Max {{alldata.[2].max_temp}} ºC</li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="card text-white bg-warning mb-3">
+    <div class="card-body">
+      <h2>{{alldata.[3].applicable_date}}</h2>
+      <ul class="General">
+        <li class="name"><img
+            src="https://www.metaweather.com/static/img/weather/png/64/{{alldata.[3].weather_state_abbr}}.png"
+            alt="weather logo"></li>
+        <li class="min">Temp {{alldata.[3].the_temp}} ºC</li>
+        <li class="min">Min {{alldata.[3].min_temp}} ºC</li>
+        <li class="max">Max {{alldata.[3].max_temp}} ºC</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card text-white bg-warning mb-3">
+    <div class="card-body text-wrap">
+      <h2 class="">Llegarás vivo a este dia?</h2>
+      <ul class="General">
+        <li class="name"><img
+            src="https://www.metaweather.com/static/img/weather/png/64/{{alldata.[4].weather_state_abbr}}.png"
+            alt="weather logo"></li>
+        <li class="min">Temp {{alldata.[4].the_temp}} ºC</li>
+        <li class="min">Min {{alldata.[4].min_temp}} ºC</li>
+        <li class="max">Max {{alldata.[4].max_temp}} ºC</li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+{{!-- <div class="card bg-light mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Light card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+    </p>
+  </div>
+</div> --}} 
