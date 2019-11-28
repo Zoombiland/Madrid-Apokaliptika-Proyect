@@ -74,13 +74,22 @@ router.post('/places', (req, res, next) => {
     .catch(err => console.log('error!!', err))
 })
 
-router.get('/map/:id', (req, res) => {
-  const placeId = req.params.id
-  Place.findById(placeId)
-    .then(thePlace => res.render('map', {
+// router.get('/map/:id', (req, res) => {
+//   const placeId = req.params.id
+//   Place.findById(placeId)
+//     .then(thePlace => res.render('map', {
+//       map: thePlace
+//     }))
+//     .catch(err => console.log("Error consultando la BBDD: ", err))
+// })
+
+router.get('/map/places', (req, res) => {
+  Places.find()
+    .then(thePlace => res.json({
+
       map: thePlace
     }))
-    .catch(err => console.log("Error consultando la BBDD: ", err))
+    .catch(err => console.log("Error  esto se  a la mierda ", err))
 })
 
 module.exports = router;
