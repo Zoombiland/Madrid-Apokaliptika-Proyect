@@ -6,8 +6,9 @@ const placesSchema = new Schema({
     dirección: String,
     categoria:  {
         type:String,
-        enum: ['Alimentación', 'Farmacia', 'Hospital', 'Comunicaciones', 'Punto de encuentro']},
-        
+        enum: ['Alimentación', 'Farmacia', 'Hospital', 'Comunicaciones', 'Punto de encuentro'],
+        default: "Punto de encuentro"
+    },
     activo: String,
     descripcion:String,
     coordinates: Object}, 

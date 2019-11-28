@@ -1,5 +1,26 @@
   var map;
 
+  function calcRoute(directionsService, directionsRenderer) {
+    var start = document.getElementById("start").value;
+    var end = document.getElementById("end").value;
+    console.log(start, end)
+    var request = {
+      origin:start,
+      destination:end,
+      travelMode: 'WALKING'
+    };
+    directionsService.route(request, function(response, status) {
+      if (status == 'OK') {
+
+        console.log(response)
+        directionsRenderer.setDirections(response);
+      }
+
+      console.log(status)
+    });
+  }
+
+
   function initMap() {
     let directionsService = new google.maps.DirectionsService();
     let directionsRenderer = new google.maps.DirectionsRenderer();
@@ -151,33 +172,52 @@
     calcRoute(directionsService, directionsRenderer);
   });
 
-  //evitar comportamiento por defecto
+
+
+  axios.get('/welcome/map/places')
+  .then(redata => {
+    //  console.log(redata)
+    let allPlaces = redata.data.map
+    //  console.log(dates, "dates")
+
+
+    let markersArr = []
+    let infoWindowArr = []
+
+    allPlaces.forEach(place => {
+
+      let marker = new google.maps.Marker({
+        position: place.coordinates,
+        map: map,
+
+      })
+      markersArr.push(marker)
+
+
+      let infowindow = new google.maps.InfoWindow({
+
+        content: `<div><h3>${place.nombre}</h3><br><h4>${place.categoria}</h4><br><h5>${place.activo}</h5><br><p>${place.descripcion}</p><div>`,
+        maxWidth: 200,
+
+      })
+      marker.addListener('click', function () {
+        infowindow.open(map, marker);
+      });
+      infoWindowArr.push(infowindow)
+
+
+
+
+
+      //  console.log(place.coordinates)
+    })
+  })
+}
+
   
-
-
-  // calcRoute(directionsService, directionsRenderer)
-  }
-
   //aqui arriba esta el cabron
-  function calcRoute(directionsService, directionsRenderer) {
-    var start = document.getElementById("start").value;
-    var end = document.getElementById("end").value;
-    console.log(start, end)
-    var request = {
-      origin:start,
-      destination:end,
-      travelMode: 'WALKING'
-    };
-    directionsService.route(request, function(response, status) {
-      if (status == 'OK') {
-
-        console.log(response)
-        directionsRenderer.setDirections(response);
-      }
-
-      console.log(status)
-    });
-  }
+  
+  
 
 
 
@@ -206,11 +246,8 @@ contentString =
     'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
     'Aboriginal people of the area. It has many springs, waterholes, ' +
     'rock caves and ancient paintings. Uluru is listed as a World ' +
-    'Heritage Site.</p>' +
-  '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-      'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
-    '(last visited June 22, 2009).</p>' +
-  '</div>' +
+    'Heritage Site.</p>'
+  </div>' 
 '</div>';
 infowindow = new google.maps.InfoWindow({
 content: contentString,
