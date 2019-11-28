@@ -1,7 +1,10 @@
   var map;
 
   function initMap() {
+    let directionsService = new google.maps.DirectionsService();
+    let directionsRenderer = new google.maps.DirectionsRenderer();
     map = new google.maps.Map(document.getElementById('map'), {
+      
       center: {
         lat: 40.414298,
         lng: -3.705811
@@ -135,9 +138,47 @@
       ]
 
     });
+
+  directionsRenderer.setMap(map);
+  directionsRenderer.setPanel(document.getElementById('directionsPanel'));
+  
+  
+  document.getElementById("start").onchange = () => calcRoute(directionsService, directionsRenderer);
+  document.getElementById("end").onchange = () => calcRoute(directionsService, directionsRenderer);
+
+  document.getElementById("searchButton").addEventListener("click", function(event){
+    event.preventDefault()
+    calcRoute(directionsService, directionsRenderer);
+  });
+
+  //evitar comportamiento por defecto
+  
+
+
+  // calcRoute(directionsService, directionsRenderer)
   }
 
-  
+  //aqui arriba esta el cabron
+  function calcRoute(directionsService, directionsRenderer) {
+    var start = document.getElementById("start").value;
+    var end = document.getElementById("end").value;
+    console.log(start, end)
+    var request = {
+      origin:start,
+      destination:end,
+      travelMode: 'WALKING'
+    };
+    directionsService.route(request, function(response, status) {
+      if (status == 'OK') {
+
+        console.log(response)
+        directionsRenderer.setDirections(response);
+      }
+
+      console.log(status)
+    });
+  }
+
 
 
 
