@@ -3,15 +3,16 @@ const Schema = mongoose.Schema;
 
 const placesSchema = new Schema({
     nombre: String,
-    localizacion: String,
+    dirección: String,
     categoria:  {
         type:String,
         enum: ['Alimentación', 'Farmacia', 'Hospital', 'Comunicaciones', 'Punto de encuentro'],
         default: "Punto de encuentro"
     },
     activo: String,
-    descripcion:String
-     }, {
+    descripcion:String,
+    coordinates: Object}, 
+    {
     timestamps: {
         createdAt: 'created_at',
         updatedAt: 'updated_at'
