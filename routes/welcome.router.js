@@ -85,9 +85,7 @@ router.post('/places', (req, res, next) => {
 
 router.get('/map/places', (req, res) => {
   Places.find()
-    .then(thePlace => res.json({
-
-      map: thePlace
+    .then(thePlace => res.json({map: thePlace
     }))
     .catch(err => console.log("Error  esto se  a la mierda ", err))
 })
