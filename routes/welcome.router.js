@@ -4,6 +4,28 @@ const APIHandler = require('../services/APIHandler')
 const weatherApi = new APIHandler("https://www.metaweather.com/api/location/766273/")
 const Places = require("../models/Places")
 const axios = require('axios');
+const User = require('../models/User')
+
+
+router.get('/', (req, res) => {
+  User.find()
+    .then(allTheUsers => res.render({
+      user: allTheUsers
+    }))
+    .catch(err => console.log("Error consultando la BBDD: ", err))
+})
+router.get('/:id', (req, res) => {
+  Book.findById(req.params.id)
+    .then(theUser => res.render( {
+      book: theUser
+    }))
+    .catch(err => console.log("Error consultando la BBDD: ", err))
+});
+
+
+
+
+
 
 
 
@@ -59,7 +81,7 @@ router.post('/places', (req, res, next) => {
     descripcion
   } = req.body
 
- 
+
 
 
   axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${direccion}&key=AIzaSyBrPNbJOlFtyYOkm722n_jbRGtSxOsE_q8`)
@@ -71,7 +93,7 @@ router.post('/places', (req, res, next) => {
         nombre
       }, "nombre", (err, places) => {
 
-        
+
         const newPlace = {
           nombre,
           direccion,
@@ -81,7 +103,7 @@ router.post('/places', (req, res, next) => {
           coordinates
         };
 
-        
+
         Places.create(newPlace)
           .then(resCreate => {
             res.redirect("/welcome");
@@ -95,7 +117,7 @@ router.post('/places', (req, res, next) => {
       });
     })
 
-  
+
 
 })
 
