@@ -3,6 +3,8 @@ const router = express.Router();
 const APIHandler = require('../services/APIHandler')
 const weatherApi = new APIHandler("https://www.metaweather.com/api/location/766273/")
 const Places = require("../models/Places")
+const axios = require('axios');
+
 /* GET home page */
 
 router.get('/', (req, res, next) => {
@@ -45,27 +47,53 @@ router.get('/map', (req, res, next) => {
 router.get('/places', (req, res, next) => {
   res.render('place')
 });
-console.log("------->Empezamos aqui")
+
 router.post('/places', (req, res, next) => {
   console.log("Aqui estoy")
   const {
     nombre,
-    localizacion,
+    dirección,
     categoria,
     activo,
     descripcion
   } = req.body
-  // activo == "operativo" ? activo = true : activo = false
-  console.log(
-    nombre,
-    localizacion,
-    categoria,
-    activo,
-    descripcion
-  )
+
+  //ESTAMOS DENTRO DE POST----------------------------
+
+
+  axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${dirección}&key=AIzaSyBrPNbJOlFtyYOkm722n_jbRGtSxOsE_q8`)
+      .then (responseFromAPI => {
+        let coordinates = responseFromAPI.data.results[0].geometry.location
+        console.log(coordinates)
+        
+        Places.findOne({ nombre }, "nombre", (err, places) => {
+          
+          //plantilla nuevo usuario
+          const newPlace = new Places({
+            nombre,
+            dirección,
+            categoria,
+            activo,
+            descripcion,
+            coordinates            
+          });
+          
+          //salva el nuevo usuario
+          newPlace.save()
+          .then(() => {
+            res.redirect("/");
+          })
+          .catch(err => {
+            res.render("place", { message: "Something went wrong" });
+          })
+        });
+      })
+
+  //ESTAMOS DENTRO DE POST-----------------------------
+
   Places.create({
       nombre,
-      localizacion,
+      dirección,
       categoria,
       activo,
       descripcion
@@ -73,15 +101,6 @@ router.post('/places', (req, res, next) => {
     .then(x => res.redirect('/welcome'))
     .catch(err => console.log('error!!', err))
 })
-
-// router.get('/map/:id', (req, res) => {
-//   const placeId = req.params.id
-//   Place.findById(placeId)
-//     .then(thePlace => res.render('map', {
-//       map: thePlace
-//     }))
-//     .catch(err => console.log("Error consultando la BBDD: ", err))
-// })
 
 router.get('/map/places', (req, res) => {
   Places.find()
