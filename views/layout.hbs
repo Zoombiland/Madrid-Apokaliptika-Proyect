@@ -17,10 +17,16 @@
       <h1>APP-POKALIPTIK MADRID</h1>
     </a>
     <div class="nav-bar-flex"></div>
+    {{#unless user}}
     <a class=" auth " href="/auth/login">Login</a>
     <a class=" auth " href="/auth/signup">Signup</a>
-    <a href="/welcome/map">Map</a>
-    <a href="/auth/logout">Logout</a>
+    {{/unless}}
+    
+    {{#if user}}
+    <a class="auth" href="/auth/logout">Logout</a>
+    <a class="auth" href="/welcome/map">Map</a>
+    {{/if }}
+
     </div>
   </nav>
   <header class="fondo">
