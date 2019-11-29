@@ -178,35 +178,35 @@
       .then(redata => {
         //  console.log(redata)
         let allPlaces = redata.data.map
-        //  console.log(dates, "dates")
-
-
+        
+        
         let markersArr = []
         let infoWindowArr = []
-
+        
         allPlaces.forEach(place => {
-
+          
           let marker = new google.maps.Marker({
             position: place.coordinates,
             map: map,
-
+            
           })
           markersArr.push(marker)
-
-
+          
+          
           let infowindow = new google.maps.InfoWindow({
-
+            
             content: `<div><h3>${place.nombre}</h3><br><h4>${place.categoria}</h4><br><h5>${place.activo}</h5><br><p>${place.descripcion}</p><div>`,
             maxWidth: 200,
-
+            
           })
           marker.addListener('click', function () {
             infowindow.open(map, marker);
           });
           infoWindowArr.push(infowindow)
-
-
-
+          console.log(infoWindowArr)
+          
+          
+          
 
 
           //  console.log(place.coordinates)

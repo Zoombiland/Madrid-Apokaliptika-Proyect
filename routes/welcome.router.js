@@ -7,30 +7,12 @@ const axios = require('axios');
 const User = require('../models/User')
 
 
-router.get('/', (req, res) => {
-  User.find()
-    .then(allTheUsers => res.render({
-      user: allTheUsers
-    }))
-    .catch(err => console.log("Error consultando la BBDD: ", err))
-})
-router.get('/:id', (req, res) => {
-  Book.findById(req.params.id)
-    .then(theUser => res.render( {
-      book: theUser
-    }))
-    .catch(err => console.log("Error consultando la BBDD: ", err))
-});
-
-
-
-
-
-
 
 
 
 router.get('/', (req, res, next) => {
+
+
   weatherApi.getFullList()
     .then(redata => {
 
@@ -49,10 +31,15 @@ router.get('/', (req, res, next) => {
           let the_tempRounded = Math.round(element.the_temp)
           element.the_temp = the_tempRounded
         }
+        if (element.applicable_date) {
+          let date = element.applicable_date.replace(/^(\d{4})-(\d{2})-(\d{2})$/g, '$3/$2/$1')
+          element.applicable_date = date
+        }
       });
-
+      console.log(req.user)
       res.render('welcome', {
-        alldata: redata.data.consolidated_weather
+        alldata: redata.data.consolidated_weather,
+        user: req.user
 
       })
     })
