@@ -22,11 +22,14 @@
     {{#unless user}}
     <a class=" auth " href="/auth/login">Login</a>
     <a class=" auth " href="/auth/signup">Signup</a>
+    
     {{/unless}}
     
     {{#if user}}
+    <a class=" auth " href="/welcome/places">Sitios</a>
+    <a class="auth" href="/welcome/map">Mapa</a>
     <a class="auth" href="/auth/logout">Logout</a>
-    <a class="auth" href="/welcome/map">Map</a>
+    
     {{/if }}
 
     </div>

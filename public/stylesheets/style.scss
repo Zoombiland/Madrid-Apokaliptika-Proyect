@@ -21,6 +21,16 @@ a:hover{
   
 }
 
+.container {
+  left: 0%;
+  width: 60%;
+  margin-left: 0;
+}
+
+.smaller {
+  font-size: 1em;
+}
+
 i:hover {
   animation: rotation 8s infinite linear;
 }
@@ -79,6 +89,10 @@ html, body {
   padding-left: 10px;
 }
 
+.ocalypseStyle{
+  color: #cdd3ce
+}
+
 .card {
   color: #6C757D;
   padding: 0;
@@ -92,3 +106,6 @@ html, body {
   border-color: #e6f14a;
 }
 
+.iconContainer {
+  font-size: 4em;
+}

@@ -29,12 +29,12 @@
 
     </div>
     <div class="col-sm-4 text-center">
-      <i class="fas fa-biohazard" width="72" height="72"></i>
+      <div class="iconContainer"><i class="fas fa-biohazard" width="72" height="72"></i></div>
       <br>
       <br>
       <h2 class="h2 mb-3 text-white font-weight-bold text center">Iniciar sesión</h2>
       <div class="text-center">
-        <div class="h3 mb-3 text-white font-weight-bold">
+        <div class="h4 mb-3 text-white">
           <form action="/auth/login" method="POST" id="form-container">
             <label for="username" class="text-md-left">Username </label>
             <input id="username" type="text" name="username" placeholder="Nombre">
@@ -51,14 +51,14 @@
             <br><br>
 
             <button class="btn btn-md btn-secondary">Login</button>
+            <br><br>
 
-            <p class="account-message">
-              No tienes cuenta{{!-- Don't have an account yet? --}}
+            <p class="smaller">
+              ¿No tienes cuenta?{{!-- Don't have an account yet? --}}
               <a href="/auth/signup" class="btn btn-light">Signup</a>
               <br>
               <br>
-              <br>
-              <br>
+              
 
 
               <a href="/" class="btn btn-dark btn-lg">Inicio</a>

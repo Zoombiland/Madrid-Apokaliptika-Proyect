@@ -26,19 +26,19 @@
 
   </div>
   <div class="col-sm-4 text-center">
-    <i class="fas fa-biohazard" width="72" height="72"></i>
+    <div class="iconContainer"><i class="fas fa-biohazard" width="72" height="72"></i></div>    <br>
     <br>
+    <h2 class="h2 mb-3 text-white font-weight-bold">Registrate</h2>
     <br>
-    <h2 class="h1 mb-3 text-white font-weight-bold">Registrate</h2>
     <div class="">
-      <div class="h4 mb-3 text-white font-weight-bold text-center">
+      <div class="h4 mb-3 text-white text-center">
         <form action="/auth/signup" method="POST" id="form-container">
           <label class="col-form-label"for="username">Username</label>
           <input id="username" type="text" name="username" placeholder="JonSnow">
           <br><br>
           <label for="password">Password</label>
           <input id="password" type="password" name="password" placeholder="Your password">
-          <br>
+          <br><br>
           {{#if message }}
           <div class="error-message">{{ message }}</div>
           {{/if}}
@@ -47,12 +47,13 @@
           <br><br>
 
           <button class="btn btn-light btn-md">Create account</button>
+          <br><br>
 
           <p class="account-message">
-            Do you already have an account?
+            ¿Ya tienes cuenta?
             <a href="/auth/login" class="btn-lg btn-secondary">Login</a>
           <br>
-          <br>
+          
           <br>
           <a href="/" class="btn btn-dark btn-lg">Inicio</a>
           </p>

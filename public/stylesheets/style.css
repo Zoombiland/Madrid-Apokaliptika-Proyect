@@ -14,6 +14,14 @@ a:hover {
   color: #CDD3CE;
   text-decoration: none; }
 
+.container {
+  left: 0%;
+  width: 60%;
+  margin-left: 0; }
+
+.smaller {
+  font-size: 1em; }
+
 i:hover {
   animation: rotation 8s infinite linear; }
 
@@ -60,6 +68,9 @@ html, body {
   line-height: 30px;
   padding-left: 10px; }
 
+.ocalypseStyle {
+  color: #cdd3ce; }
+
 .card {
   color: #6C757D;
   padding: 0;
@@ -70,5 +81,8 @@ html, body {
   background-color: #e6f14a;
   color: #6C757D;
   border-color: #e6f14a; }
+
+.iconContainer {
+  font-size: 4em; }
 
 /*# sourceMappingURL=style.css.map */
