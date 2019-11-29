@@ -51,11 +51,11 @@ router.get('/', (req, res, next) => {
 
 
 router.get('/map', (req, res, next) => {
-  res.render('map');
+  res.render('map', {user: req.user});
 });
 
 router.get('/places', (req, res, next) => {
-  res.render('place')
+  res.render('place', {user: req.user})
 });
 
 router.post('/places', (req, res, next) => {
