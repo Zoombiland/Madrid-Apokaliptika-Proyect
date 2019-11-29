@@ -1,17 +1,27 @@
 <div class=" col">
   <div class="row d-flex justify-content-around">
 
-    <div>
-      <h1>Bienvenido  {{user.username}}, eres todo un superviviente!!!!</h1>
+    <div class="col-sm-8 text-center text-white">
       <br>
-      <h3>Este es tu espacio, ¿has mirado que tiempo hace para los próximos dias ?</h3>
+      <br>
+      <br>
+      <br>
+      <h2>Bienvenido  {{user.username}}, eres todo un superviviente!!!!</h2>
+      <br>
+      <br>
+      <h3>Este es tu espacio, consulta "Map" para ver resultados de los nuevos sitios</h3>
+      <br>
+      <h3>Puedes incorporar experiencias en el apartado "Sitios"</h3>
+      <br>
+      
+      <br>
       <br>
       
     </div>
 
     <div class="row d-flex justify-content-arrond">
 
-    <div class="card text-white bg-warning mb-3">
+    <div class="card text-muted  mb-3" style="background-color: #E6F14A">
       <div class="card-body text-center">
         <h2 class="">Hoy</h2>
        
@@ -27,10 +37,10 @@
       </div>
     </div>
 
-    <div class="card text-white bg-warning mb-3">
+    <div class="card text-muted  mb-3" style="background-color: #E6F14A">
       <div class="card-body text-center">
         <h2>Mañana</h2>
-        
+      
         <h2 class="">{{alldata.[1].applicable_date}}</h2>
         <ul class="General">
           <li class="name"><img
@@ -43,9 +53,11 @@
       </div>
     </div>
 
-    <div class="card text-white bg-warning mb-3">
+    <div class="card text-muted  mb-3" style="background-color: #E6F14A">
       <div class="card-body">
+        <br>
         <h2>{{alldata.[2].applicable_date}}</h2>
+        <br>
         <ul class="General">
           <li class="name"><img
               src="https://www.metaweather.com/static/img/weather/png/64/{{alldata.[2].weather_state_abbr}}.png"
@@ -57,9 +69,11 @@
       </div>
   </div>
 
-  <div class="card text-white bg-warning mb-3">
+  <div class="card text-muted  mb-3" style="background-color: #E6F14A">
     <div class="card-body">
+      <br>
       <h2>{{alldata.[3].applicable_date}}</h2>
+      <br>
       <ul class="General">
         <li class="name"><img
             src="https://www.metaweather.com/static/img/weather/png/64/{{alldata.[3].weather_state_abbr}}.png"
@@ -71,7 +85,7 @@
     </div>
   </div>
 
-  <div class="card text-white bg-warning mb-3">
+  <div class="card text-muted  mb-3" style="background-color: #E6F14A">
     <div class="card-body text-wrap">
       <h2 class="">Llegarás vivo </h2>
       <h2 class="">a este dia?</h2>
@@ -89,11 +103,3 @@
 </div>
 
 
-{{!-- <div class="card bg-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Light card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-  </div>
-</div> --}} 

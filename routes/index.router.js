@@ -9,8 +9,7 @@ router.get('/', (req, res, next) => {
   res.render('index',  { layout: false, 
     user: req.user
   })
-}
-  );
+});
 // router.use((req, res, next) => {
 //   console.log(req.session)
 //   req.session.currentUser ? next() : res.redirect("/login")
