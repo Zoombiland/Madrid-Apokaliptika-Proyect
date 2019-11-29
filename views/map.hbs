@@ -8,8 +8,8 @@
   <meta charset="utf-8">
   <style>
     #map {
-      height: 100%;
-      width: 70%
+      height: 91%;
+      width: 100%
     }
 
     html,
@@ -25,7 +25,9 @@
   <div id="map"></div>
   {{!-- <div id="directionsPanel" style="position:fixed;right:0;float:right;width:30%;height 100%"></div> --}}
   {{!-- DIRECTIONS FORM --}}
-  <form action="/welcome/map" method="POST" id="form-directions" >
+  
+  
+  <form id="floating-panel" action="/welcome/map" method="POST" id="form-directions" >
           <label for="start">Origen</label>
           <input id="start" type="text" name="start" value="13, calle alcala" onchange="calcRoute(directionsService, directionsRenderer)">
           <br><br>
@@ -36,9 +38,9 @@
           <div class="error-message">{{ message }}</div>
           {{/if}}
 
-          <button id="searchButton"class="btn btn-primary">Dibuja ruta</button>
+          <button id="searchButton" class="btn btn-primary">Dibuja ruta</button>
 
-        </form>
+  </form>
   {{!-- DIRECTIONS FORM --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"
     integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>

@@ -34,26 +34,36 @@
       styles: [{
           elementType: 'geometry',
           stylers: [{
-            color: '#242f3e'
+            color: '#242f3e',
           }]
         },
         {
           elementType: 'labels.text.stroke',
           stylers: [{
-            color: '#242f3e'
+            color: '#242f3e',
+            visibility: "none"
           }]
         },
         {
           elementType: 'labels.text.fill',
           stylers: [{
-            color: '#746855'
+            color: '#746855',
+            
           }]
         },
+        
         {
-          featureType: 'administrative.locality',
-          elementType: 'labels.text',
+          featureType: 'administrative',
+          elementType: 'labels.text.fill',
           stylers: [{
-            color: '#d59563'
+            color: "yellow"
+          }, ]
+        },
+        {
+          featureType: 'landscape.man_made',
+          elementType: 'all',
+          stylers: [{
+            color: "#050517"
           }, ]
         },
         {
@@ -67,7 +77,7 @@
           featureType: 'poi.park',
           elementType: 'geometry',
           stylers: [{
-            color: '#263c3f'
+            color: '#303633'
           }]
         },
         {
@@ -76,14 +86,14 @@
           stylers: [{
             color: '#6b9a76'
           }, {
-            visibility: 'on'
+            visibility: 'off'
           }]
         },
         {
           featureType: 'road',
           elementType: 'geometry',
           stylers: [{
-            color: '#38414e'
+            color: '#6c757d'
           }]
         },
         {
@@ -104,7 +114,7 @@
           featureType: 'road.highway',
           elementType: 'geometry',
           stylers: [{
-            color: '#746855'
+            color: '#303633'
           }]
         },
         {
@@ -125,14 +135,16 @@
           featureType: 'transit',
           elementType: 'geometry',
           stylers: [{
-            color: '#2f3948'
+            color: '#2f3948',
+            
           }]
         },
         {
           featureType: 'transit.station',
           elementType: 'labels.text.fill',
           stylers: [{
-            color: '#d59563'
+            color: '#d59563',
+            
           }]
         },
         {
@@ -155,11 +167,19 @@
           stylers: [{
             color: '#17263c'
           }]
-        }
+        },
+        {
+          featureType: "landscape",
+          elementType: "labels",
+          stylers: [
+            { "visibility": "off" }
+          ]
+        },
+        
       ]
 
     });
-
+    
     directionsRenderer.setMap(map);
     directionsRenderer.setPanel(document.getElementById('directionsPanel'));
 
@@ -188,6 +208,9 @@
           let marker = new google.maps.Marker({
             position: place.coordinates,
             map: map,
+            icon: {
+              url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+            }
             
           })
           markersArr.push(marker)
@@ -195,7 +218,7 @@
           
           let infowindow = new google.maps.InfoWindow({
             
-            content: `<div><h3>${place.nombre}</h3><br><h4>${place.categoria}</h4><br><h5>${place.activo}</h5><br><p>${place.descripcion}</p><div>`,
+            content: `<div class="card"><h5>${place.nombre}</h5><br><h6>${place.categoria}</h6><br><h6>${place.activo}</h6><br><p>${place.descripcion}</p><div>`,
             maxWidth: 200,
             
           })
