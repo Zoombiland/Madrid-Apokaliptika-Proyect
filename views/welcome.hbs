@@ -1,9 +1,21 @@
 <div class=" col">
   <div class="row d-flex justify-content-around">
 
+    <div>
+      <h1>Bienvenido  {{user.username}}, eres todo un superviviente!!!!</h1>
+      <br>
+      <h3>Este es tu espacio, ¿has mirado que tiempo hace para los próximos dias ?</h3>
+      <br>
+      
+    </div>
+
+    <div class="row d-flex justify-content-arrond">
+
     <div class="card text-white bg-warning mb-3">
       <div class="card-body text-center">
         <h2 class="">Hoy</h2>
+       
+        <h2 class="">{{alldata.[0].applicable_date}}</h2>
         <ul class="">
           <li class="name"><img
               src="https://www.metaweather.com/static/img/weather/png/64/{{alldata.[0].weather_state_abbr}}.png"
@@ -16,8 +28,10 @@
     </div>
 
     <div class="card text-white bg-warning mb-3">
-      <div class="card-body">
+      <div class="card-body text-center">
         <h2>Mañana</h2>
+        
+        <h2 class="">{{alldata.[1].applicable_date}}</h2>
         <ul class="General">
           <li class="name"><img
               src="https://www.metaweather.com/static/img/weather/png/64/{{alldata.[1].weather_state_abbr}}.png"
@@ -59,7 +73,8 @@
 
   <div class="card text-white bg-warning mb-3">
     <div class="card-body text-wrap">
-      <h2 class="">Llegarás vivo a este dia?</h2>
+      <h2 class="">Llegarás vivo </h2>
+      <h2 class="">a este dia?</h2>
       <ul class="General">
         <li class="name"><img
             src="https://www.metaweather.com/static/img/weather/png/64/{{alldata.[4].weather_state_abbr}}.png"

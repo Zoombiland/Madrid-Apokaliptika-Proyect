@@ -4,10 +4,15 @@ const APIHandler = require('../services/APIHandler')
 const weatherApi = new APIHandler("https://www.metaweather.com/api/location/766273/")
 const Places = require("../models/Places")
 const axios = require('axios');
+const User = require('../models/User')
 
-/* GET home page */
+
+
+
 
 router.get('/', (req, res, next) => {
+
+
   weatherApi.getFullList()
     .then(redata => {
 
@@ -26,10 +31,15 @@ router.get('/', (req, res, next) => {
           let the_tempRounded = Math.round(element.the_temp)
           element.the_temp = the_tempRounded
         }
+        if (element.applicable_date) {
+          let date = element.applicable_date.replace(/^(\d{4})-(\d{2})-(\d{2})$/g, '$3/$2/$1')
+          element.applicable_date = date
+        }
       });
-
+      console.log(req.user)
       res.render('welcome', {
-        alldata: redata.data.consolidated_weather
+        alldata: redata.data.consolidated_weather,
+        user: req.user
 
       })
     })
@@ -58,7 +68,7 @@ router.post('/places', (req, res, next) => {
     descripcion
   } = req.body
 
-  //ESTAMOS DENTRO DE POST----------------------------
+
 
 
   axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${direccion}&key=AIzaSyBrPNbJOlFtyYOkm722n_jbRGtSxOsE_q8`)
@@ -70,7 +80,7 @@ router.post('/places', (req, res, next) => {
         nombre
       }, "nombre", (err, places) => {
 
-        //plantilla nuevo usuario
+
         const newPlace = {
           nombre,
           direccion,
@@ -80,7 +90,7 @@ router.post('/places', (req, res, next) => {
           coordinates
         };
 
-        //salva el nuevo usuario
+
         Places.create(newPlace)
           .then(resCreate => {
             res.redirect("/welcome");
@@ -94,7 +104,7 @@ router.post('/places', (req, res, next) => {
       });
     })
 
-  //ESTAMOS DENTRO DE POST-----------------------------
+
 
 })
 
@@ -107,8 +117,3 @@ router.get('/map/places', (req, res) => {
 })
 
 module.exports = router;
-// console.log("--->", data, "despues de la modificacion")
-// let min = Math.floor(data.min_temp,1)
-// let max = Math.floor(data.max_temp,1)
-// console.log(min)
-// alldataMin: min, alldataMax: max
