@@ -6,6 +6,34 @@ body {
   font: "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.logoAppStyle {
+  color: yellow;
+}
+
+a {
+  color: #CDD3CE;;
+}
+
+a:hover{
+  color: #CDD3CE;
+  
+  text-decoration: none;
+  
+}
+
+i:hover {
+  animation: rotation 8s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 
 
 li {
@@ -17,7 +45,7 @@ a {
 }
 
 .bar {
-  background-color: red;
+  background-color: #050517;;
 }
 .auth {
   margin-right: 3em;
@@ -37,15 +65,30 @@ html, body {
   padding: 0;
 }
 #floating-panel {
-  
-  top: 10px;
-  left: 25%;
+  position: absolute;
+  top: 10%;
+  left: 0.5%;
   z-index: 5;
-  background-color: #fff;
+  background-color: #6C757D;
   padding: 5px;
-  border: 1px solid #999;
+  border: 1px solid #CDD3CE ;
+  color: #CDD3CE;
   text-align: center;
-  font-family: 'Roboto','sans-serif';
+  font-family: 'Helvetica','sans-serif';
   line-height: 30px;
   padding-left: 10px;
 }
+
+.card {
+  color: #6C757D;
+  padding: 0;
+  margin: 0;
+  border: white;
+}
+
+#searchButton {
+  background-color: #e6f14a;
+  color: #6C757D;
+  border-color: #e6f14a;
+}
+
